@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Лаба 2</title>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Akronim" rel="stylesheet">
+    <style>
+   body {
+    background-image: url(img/fon.jpg) no-repeat;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%; 
+     font-family: 'Merriweather', serif;
+      }
+   }
+      .text {
+border: none;
+font-family: 'Akronim', cursive;
+        }
+      #el{
+          margin: 50px 25px;
+          width: 100px;
+          height:50px;
+          transform: translate(10px, 20px);
+          background:blue;
+          border: 5px red solid
+      }
+      .success{
+          border:2px solid green;
+      }
+      .error{
+          border:2px solid red;}
+     TABLE {
+    border-collapse: collapse; 
+    width: 300px; 
+    border: black solid 2px;
+    border-radius: 5px;
+      }
+   TH { 
+    background: #fc0; 
+    text-align: left; 
+   }
+   TD {
+    background: #fff; 
+    text-align: center; 
+   }
+   TH, TD {
+    border: 1px solid black; 
+    padding: 4px; 
+   }
+      input{
+          border:none;
+      }
+      input:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+      [type="submit"] {
+    width: 200px; 
+    height: 50px; 
+    border-radius: 5px;
+    background-color: white;
+    color:blue;
+    border-color:cyan;
+    border-style: solid;
+    font-family: 'Merriweather', serif;
+        }
+        img{
+    width: 800px;
+    height: 378px;
+    border: 4px solid red;
+}
+</style>
+</head>
+<body>
+  <h1>Зміна властивостей зображення</h1>
+    <script>
+        var img = document.getElementById('img');
+        console.log(img.clientWidth);
+</script>
+<img id="img" style="width: 400px" src="https://avatars.mds.yandex.net/get-pdb/216365/eb43844b-51d6-41a0-86c0-0f3c47da5b48/s375" id="img" alt="dog">
+   <h2>Зміна розмірів:</h2>  
+   <table>
+   <tr><th>Ширина(width)</th><td><input type="number" id="width_img"  name="width_img"></td></tr>
+   <tr><th>Висота(height)</th><td><input type="number" id="height_img"  name="height_img"></td></tr>
+  </table>
+    <br>
+    <h2>Зміна рамки:</h2>  
+   <table>
+   <tr><th>Товщина</th><td><input type="number" id="border_size"  name="border_size"></td></tr>
+   <tr><th>Колір</th><td><input type="text" id="border_color"  name="border_color"></td></tr>
+  </table>
+     <br>
+    <h2>Додатково:</h2>  
+   <table>
+   <tr><th>Альтернативний текст</th><td><input type="text" id="alt_text"  name="alt_text"></td></tr>
+  </table>
+    <p><input type="submit"  value="Застосувати" onclick="myFunction()"></p>
+    <script>
+    function myFunction(){
+    var width_img = document.getElementById("width_img").value;
+    var height_img = document.getElementById("height_img").value;
+    var border_size = document.getElementById("border_size").value;
+    var border_color = document.getElementById("border_color").value;
+    var alt_text = document.getElementById("alt_text").value;
+    var fail=false;
+    var adr_pattern = /[0-9a-zA-Z#]/i;
+    
+    if(adr_pattern.test(border_color)==false || adr_pattern.test(alt_text)==false){
+        fail = "Використовуйте лише англійську мову";
+        alert(fail);
+    }
+    document.getElementById("img").style.width = width_img+'px';
+    document.getElementById("img").style.height = height_img+'px';
+    document.getElementById("img").style.borderSize = border_size+'px';
+    document.getElementById("img").style.borderColor = border_color;
+    document.getElementById("img").alt = alt_text;
+}
+    </script>
+    </body>
+</html>

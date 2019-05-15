@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>Лаба 2</title>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Akronim" rel="stylesheet">
+    <style>
+   body {
+    background-image: url(img/fon.jpg) no-repeat;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%; 
+     font-family: 'Merriweather', serif;
+      }
+   }
+      .text {
+border: none;
+font-family: 'Akronim', cursive;
+        }
+      #el{
+          margin: 50px 25px;
+          width: 100px;
+          height:50px;
+          transform: translate(10px, 20px);
+          background:blue;
+          border: 5px red solid
+      }
+      .success{
+          border:2px solid green;
+      }
+      .error{
+          border:2px solid red;}
+     TABLE {
+    border-collapse: collapse; 
+    width: 300px; 
+    border: black solid 2px;
+    border-radius: 5px;
+      }
+   TH { 
+    background: #fc0; 
+    text-align: left; 
+   }
+   TD {
+    background: #fff; 
+    text-align: center; 
+   }
+   TH, TD {
+    border: 1px solid black; 
+    padding: 4px; 
+   }
+      input{
+          border:none;
+      }
+      input:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+      button {
+    width: 200px; 
+    height: 50px; 
+    border-radius: 5px;
+    background-color: white;
+    color:blue;
+    border-color:cyan;
+    border-style: solid;
+    font-family: 'Merriweather', serif;
+        }
+        img{
+    width: 800px;
+    height: 378px;
+    border: 4px solid red;
+}
+</style>
+</head>
+<body>
+  <h1>Довжина річки</h1>
+ <table>
+            <tr><th>Річка</th><td><input type="text" name="name" id="name"></td></tr>
+            <tr><th>Довжина</th><td><input type="number" name="price" id="price"></td></tr>
+       </table>     
+            <br>
+            <button onclick="addTable()">Додати таблицю</button>
+            <button onclick="addRow()">Додати рядок</button>
+            <div id="mainDiv">
+            </div>
+        <canvas id="myChart"></canvas>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+        <script>function addTable(){
+    var myElement = document.getElementById("mainDiv");
+    var myTable = document.createElement("table");
+    myTable.id  = "tableId";
+    myElement.appendChild(myTable);
+}
+
+var name1=[];
+    var price1=[];
+
+function addRow(){
+    var name = document.getElementById("name").value;
+    var price = document.getElementById("price").value;
+    console.log(name, price);
+    name1.push(name);
+    price1.push(price);
+    console.log(name1, price1);
+    var myElement = document.getElementById("tableId");
+    var tr = document.createElement("tr");
+    tr.id = "myTr";
+    var td = document.createElement("td");
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+    var cell = document.createElement("button");
+    var cell3 = document.createTextNode("DELETE");
+    var cell1 = document.createTextNode(name1);
+    var cell2 = document.createTextNode(price1);
+    td.appendChild(cell);
+    cell.appendChild(cell3);
+    td1.appendChild(cell1);
+    td2.appendChild(cell2);
+    tr.appendChild(td);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    myElement.appendChild(tr);
+    var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: name1,
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(13, 222, 83)',
+            borderColor: 'rgb(13, 222, 83)',
+            data: price1
+        }]
+    },
+
+
+    options: {}
+});
+}</script>
+
+    </body>
+</html>
